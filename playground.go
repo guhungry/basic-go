@@ -99,13 +99,13 @@ func typedecimal() {
 	fmt.Println(one.Add(two))
 }
 
-type CustomType struct {
-	firstName string
-	lastName  string
-	age       int
-}
-
 func customtype() {
+	type CustomType struct {
+		firstName string
+		lastName  string
+		age       int
+	}
+
 	a := CustomType{firstName: "A", lastName: "B", age: 10}
 
 	fmt.Printf("%+v\n", a)
@@ -118,14 +118,14 @@ func customtype() {
 	fmt.Printf("%+v\n", b)
 }
 
-type Address struct {
-	HomeNo     string
-	StreetName string
-	Province   string
-	ZipCode    int
-}
-
 func workshopAddress() {
+	type Address struct {
+		HomeNo     string
+		StreetName string
+		Province   string
+		ZipCode    int
+	}
+
 	a := Address{HomeNo: "15", StreetName: "My Street", Province: "Nonthaburi", ZipCode: 11120}
 
 	fmt.Printf("%+v\n", a)
