@@ -33,6 +33,8 @@ func main() {
 	arraySlice()
 	line()
 	workshopArraySlice()
+	line()
+	workshopIfElse()
 }
 
 func hello() {
@@ -72,9 +74,9 @@ func conversion() {
 	dump(float)
 
 	inter := interface{}("14")
-	val, ok := inter.(int)
+	val, ok := inter.(string)
 	if !ok {
-		fmt.Println("parse interface error:", str, err)
+		fmt.Println("parse interface error:", inter, ok)
 		return
 	}
 	dump(val)
@@ -160,4 +162,26 @@ func workshopArraySlice() {
 
 	last4Index := len(id) - 4
 	dump(id[last4Index:])
+}
+
+func workshopIfElse() {
+	score := 90
+	grade := getGrage(score)
+
+	fmt.Printf("Score: %d, grade: %s\n", score, grade)
+}
+
+func getGrage(score int) string {
+	switch {
+	case score > 90:
+		return "A"
+	case score > 80:
+		return "B"
+	case score > 70:
+		return "C"
+	case score > 60:
+		return "D"
+	default:
+		return "Fail"
+	}
 }
