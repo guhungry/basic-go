@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"strconv"
 
+	"bee-playground/foo"
+
 	"github.com/shopspring/decimal"
 	"golang.org/x/text/language"
 	"golang.org/x/text/message"
@@ -41,6 +43,8 @@ func main() {
 	workshopFor()
 	line()
 	workshopCar()
+	line()
+	workshopPackage()
 }
 
 func hello() {
@@ -238,10 +242,14 @@ func CarPrintDetails(name string, model string, price float64) {
 }
 
 func CarPrintDetailWithCustomType(car Car) {
-	fmt.Printf("Name: %s\nModel: %s\nPrice: $%f\n", car.Name, car.Model, car.Price)
+	fmt.Printf("%+v", car)
 }
 
 func CarPrettyPrintPrice(car Car) {
 	p := message.NewPrinter(language.Thai)
 	p.Printf("Name: %s\nModel: %s\nPrice: $%0.2f\n", car.Name, car.Model, car.Price)
+}
+
+func workshopPackage() {
+	foo.PrintFoo()
 }
