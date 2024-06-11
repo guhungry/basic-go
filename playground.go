@@ -29,6 +29,10 @@ func main() {
 	customtype()
 	line()
 	workshopAddress()
+	line()
+	arraySlice()
+	line()
+	workshopArraySlice()
 }
 
 func hello() {
@@ -133,4 +137,27 @@ func workshopAddress() {
 	a := Address{HomeNo: "15", StreetName: "My Street", Province: "Nonthaburi", ZipCode: 11120}
 
 	dump(a)
+}
+
+func arraySlice() {
+	arr := [2]string{"foo", "bar"}
+	dump(arr)
+
+	sli := []string{"foo", "bar"}
+	sli = append(sli, "append")
+	sli = append(sli, "extra")
+	dump(sli)
+
+	fmt.Printf("%v\n", sli[2])
+	fmt.Printf("%v\n", sli[1:])
+	fmt.Printf("%v\n", sli[:2])
+	fmt.Printf("%v\n", sli[1:3])
+}
+
+func workshopArraySlice() {
+	id := "1234567890123"
+	dump(id)
+
+	last4Index := len(id) - 4
+	dump(id[last4Index:])
 }
