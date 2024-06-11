@@ -44,6 +44,10 @@ func line() {
 	fmt.Println("======================")
 }
 
+func dump(val interface{}) {
+	fmt.Printf("%T: %+v\n", val, val)
+}
+
 func workshopDataType() {
 	golang := "golang is a simple programming language"
 	number := 1024
@@ -61,7 +65,7 @@ func conversion() {
 		fmt.Println("parse float error:", str, err)
 		return
 	}
-	fmt.Printf("%T: %v\n", float, float)
+	dump(float)
 
 	inter := interface{}("14")
 	val, ok := inter.(int)
@@ -69,7 +73,7 @@ func conversion() {
 		fmt.Println("parse interface error:", str, err)
 		return
 	}
-	fmt.Printf("%T: %v\n", val, val)
+	dump(val)
 }
 
 func maptype() {
@@ -108,14 +112,14 @@ func customtype() {
 
 	a := CustomType{firstName: "A", lastName: "B", age: 10}
 
-	fmt.Printf("%+v\n", a)
+	dump(a)
 
 	var b CustomType
 	b.firstName = "B"
 	b.lastName = "C"
 	b.age = 15
 
-	fmt.Printf("%+v\n", b)
+	dump(b)
 }
 
 func workshopAddress() {
@@ -128,5 +132,5 @@ func workshopAddress() {
 
 	a := Address{HomeNo: "15", StreetName: "My Street", Province: "Nonthaburi", ZipCode: 11120}
 
-	fmt.Printf("%+v\n", a)
+	dump(a)
 }
