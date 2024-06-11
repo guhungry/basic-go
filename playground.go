@@ -35,6 +35,8 @@ func main() {
 	workshopArraySlice()
 	line()
 	workshopIfElse()
+	line()
+	workshopFor()
 }
 
 func hello() {
@@ -183,5 +185,32 @@ func getGrage(score int) string {
 		return "D"
 	default:
 		return "Fail"
+	}
+}
+
+func workshopFor() {
+	sumFor()
+	oddFor()
+}
+
+func sumFor() {
+	sum := 0
+	for ; sum <= 100; sum += 5 {
+	}
+	fmt.Printf("Sum: %d\n", sum)
+}
+
+func oddFor() {
+	numbers := [100]int{}
+	for i := range numbers {
+		numbers[i] = i + 1
+	}
+	dump(numbers)
+
+	//	for i := 1; i <= 100; i++ {
+	for _, i := range numbers {
+		if i%2 == 0 {
+			fmt.Println(i)
+		}
 	}
 }
