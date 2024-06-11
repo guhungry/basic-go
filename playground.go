@@ -5,10 +5,9 @@ import (
 	"strconv"
 
 	"bee-playground/foo"
+	"bee-playground/money"
 
 	"github.com/shopspring/decimal"
-	"golang.org/x/text/language"
-	"golang.org/x/text/message"
 )
 
 const gconst = "Global Constant"
@@ -47,6 +46,8 @@ func main() {
 	workshopPackage()
 	line()
 	methods()
+	line()
+	workshopMethods()
 }
 
 func hello() {
@@ -248,8 +249,7 @@ func CarPrintDetailWithCustomType(car Car) {
 }
 
 func CarPrettyPrintPrice(car Car) {
-	p := message.NewPrinter(language.Thai)
-	p.Printf("Name: %s\nModel: %s\nPrice: $%0.2f\n", car.Name, car.Model, car.Price)
+	fmt.Printf("Name: %s\nModel: %s\nPrice: $%0.2f\n", car.Name, car.Model, money.FormatMoney(car.Price))
 }
 
 func workshopPackage() {
@@ -270,4 +270,26 @@ func methods() {
 
 	dump(bee)
 	fmt.Printf("isAdult: %t\n", bee.isAdult())
+}
+
+type Employee struct {
+	FirstName string
+	LastName  string
+	Salary    float64
+}
+
+func (v Employee) FullName() {
+	fmt.Printf("Full Name: %s %s\n", v.FirstName, v.LastName)
+}
+
+func (v Employee) PrintSalary() {
+	fmt.Printf("Salary: $%s\n", money.FormatMoney(v.Salary))
+}
+
+func workshopMethods() {
+	result := Employee{FirstName: "Bee", LastName: "Haha", Salary: 55555555}
+
+	dump(result)
+	result.FullName()
+	result.PrintSalary()
 }
