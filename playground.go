@@ -45,6 +45,8 @@ func main() {
 	workshopCar()
 	line()
 	workshopPackage()
+	line()
+	methods()
 }
 
 func hello() {
@@ -252,4 +254,20 @@ func CarPrettyPrintPrice(car Car) {
 
 func workshopPackage() {
 	foo.PrintFoo()
+}
+
+type Bee struct {
+	Name string
+	Age  int
+}
+
+func (m Bee) isAdult() bool {
+	return m.Age > 20
+}
+
+func methods() {
+	bee := Bee{Name: "Bee", Age: 35}
+
+	dump(bee)
+	fmt.Printf("isAdult: %t\n", bee.isAdult())
 }
