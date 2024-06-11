@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"strconv"
+
+	"github.com/shopspring/decimal"
 )
 
 const gconst = "Global Constant"
@@ -16,11 +18,17 @@ func init() {
 func main() {
 	hello()
 	line()
-	datatype()
+	workshopDataType()
 	line()
 	conversion()
 	line()
 	maptype()
+	line()
+	typedecimal()
+	line()
+	customtype()
+	line()
+	workshopAddress()
 }
 
 func hello() {
@@ -36,7 +44,7 @@ func line() {
 	fmt.Println("======================")
 }
 
-func datatype() {
+func workshopDataType() {
 	golang := "golang is a simple programming language"
 	number := 1024
 	float := float64(100.35)
@@ -54,6 +62,14 @@ func conversion() {
 		return
 	}
 	fmt.Printf("%T: %v\n", float, float)
+
+	inter := interface{}("14")
+	val, ok := inter.(int)
+	if !ok {
+		fmt.Println("parse interface error:", str, err)
+		return
+	}
+	fmt.Printf("%T: %v\n", val, val)
 }
 
 func maptype() {
@@ -72,7 +88,45 @@ func maptype() {
 	if !ok {
 		fmt.Println("get value error:", key, ok)
 		return
-
 	}
 	fmt.Printf("value: %s\n", val)
+}
+
+func typedecimal() {
+	one := decimal.NewFromFloat(1)
+	two := decimal.NewFromFloat(2)
+
+	fmt.Println(one.Add(two))
+}
+
+type CustomType struct {
+	firstName string
+	lastName  string
+	age       int
+}
+
+func customtype() {
+	a := CustomType{firstName: "A", lastName: "B", age: 10}
+
+	fmt.Printf("%+v\n", a)
+
+	var b CustomType
+	b.firstName = "B"
+	b.lastName = "C"
+	b.age = 15
+
+	fmt.Printf("%+v\n", b)
+}
+
+type Address struct {
+	HomeNo     string
+	StreetName string
+	Province   string
+	ZipCode    int
+}
+
+func workshopAddress() {
+	a := Address{HomeNo: "15", StreetName: "My Street", Province: "Nonthaburi", ZipCode: 11120}
+
+	fmt.Printf("%+v\n", a)
 }
