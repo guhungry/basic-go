@@ -5,6 +5,8 @@ import (
 	"strconv"
 
 	"github.com/shopspring/decimal"
+	"golang.org/x/text/language"
+	"golang.org/x/text/message"
 )
 
 const gconst = "Global Constant"
@@ -37,6 +39,8 @@ func main() {
 	workshopIfElse()
 	line()
 	workshopFor()
+	line()
+	workshopCar()
 }
 
 func hello() {
@@ -213,4 +217,31 @@ func oddFor() {
 			fmt.Println(i)
 		}
 	}
+}
+
+type Car struct {
+	Name  string
+	Model string
+	Price float64
+}
+
+func workshopCar() {
+	car := Car{Name: "BMW", Model: "i8", Price: 13000000}
+
+	CarPrintDetails(car.Name, car.Model, car.Price)
+	CarPrintDetailWithCustomType(car)
+	CarPrettyPrintPrice(car)
+}
+
+func CarPrintDetails(name string, model string, price float64) {
+	fmt.Printf("Name: %s\nModel: %s\nPrice: $%f\n", name, model, price)
+}
+
+func CarPrintDetailWithCustomType(car Car) {
+	fmt.Printf("Name: %s\nModel: %s\nPrice: $%f\n", car.Name, car.Model, car.Price)
+}
+
+func CarPrettyPrintPrice(car Car) {
+	p := message.NewPrinter(language.Thai)
+	p.Printf("Name: %s\nModel: %s\nPrice: $%0.2f\n", car.Name, car.Model, car.Price)
 }
