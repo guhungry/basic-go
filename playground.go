@@ -275,6 +275,7 @@ func methods() {
 type Employee struct {
 	FirstName string
 	LastName  string
+	Branch    string
 	Salary    float64
 }
 
