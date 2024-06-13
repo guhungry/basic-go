@@ -74,7 +74,11 @@ func workshopDataType() {
 	boolean := true
 	bite := []byte(`simple byte string`)
 
-	fmt.Printf("%T: %s\n%T: %d\n%T: %g\n%T: %t\n%T: %v\n", golang, golang, number, number, float, float, boolean, boolean, bite, bite)
+	dump(golang)
+	dump(number)
+	dump(float)
+	dump(boolean)
+	dump(bite)
 }
 
 func conversion() {
