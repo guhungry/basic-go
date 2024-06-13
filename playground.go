@@ -56,7 +56,7 @@ func hello() {
 
 	gvar = "Change"
 
-	fmt.Println("Hello, Bee (%s, %s, %s)", gconst, gvar, inline)
+	fmt.Printf("Hello, Bee (%s, %s, %s)\n", gconst, gvar, inline)
 }
 
 func line() {
