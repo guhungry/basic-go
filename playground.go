@@ -328,9 +328,9 @@ func sumNumber[T ~int | ~int8 | ~int16 | ~int32 | ~int64 | ~float32 | ~float64](
 type Users struct {
 	Code int `json:"code"`
 	Data []struct {
-		Id int `json:"id"`
-		Name string `json:"name"`
-		Email string `json:"email"`
+		Id     int    `json:"id"`
+		Name   string `json:"name"`
+		Email  string `json:"email"`
 		Gender string `json:"gender"`
 		Status string `json:"status"`
 	} `json:"data"`
