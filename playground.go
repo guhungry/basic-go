@@ -1,7 +1,10 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
+	"log"
+	"net/http"
 	"strconv"
 
 	"bee-playground/foo"
@@ -50,6 +53,8 @@ func main() {
 	workshopMethods()
 	line()
 	workshopGenerics()
+	line()
+	workshopHttp()
 }
 
 func hello() {
@@ -302,9 +307,9 @@ func workshopMethods() {
 }
 
 func workshopGenerics() {
-	ints := []int{1, 2,3,4,5}
-	float32s := []float32{4.7,5.9,1.2,8.6}
-	float64s := []float64{1.23,6.33,12.6}
+	ints := []int{1, 2, 3, 4, 5}
+	float32s := []float32{4.7, 5.9, 1.2, 8.6}
+	float64s := []float64{1.23, 6.33, 12.6}
 
 	dump(sumNumber(ints))
 	dump(sumNumber(float32s))
@@ -318,4 +323,49 @@ func sumNumber[T ~int | ~int8 | ~int16 | ~int32 | ~int64 | ~float32 | ~float64](
 		result += v
 	}
 	return result
+}
+
+type Users struct {
+	Code int `json:"code"`
+	Data []struct {
+		Id int `json:"id"`
+		Name string `json:"name"`
+		Email string `json:"email"`
+		Gender string `json:"gender"`
+		Status string `json:"status"`
+	} `json:"data"`
+}
+
+func workshopHttp() {
+	url := "https://gorest.co.in/public-api/users"
+
+	response, err := requestJson[Users](url, nil)
+	if err != nil {
+		log.Println(err)
+	}
+	dump(response)
+}
+
+func requestJson[T any](url string, body any) (T, any) {
+	var result T
+
+	req, err := http.NewRequest(http.MethodGet, url, nil)
+	if err != nil {
+		log.Println("http request error:", err)
+		return result, err
+	}
+
+	client := &http.Client{}
+	res, err := client.Do(req)
+	if err != nil {
+		log.Println("client do error:", err)
+		return result, err
+	}
+	defer res.Body.Close()
+
+	if err := json.NewDecoder(res.Body).Decode(&result); err != nil {
+		log.Println("parse json error:", err)
+		return result, err
+	}
+	return result, nil
 }
