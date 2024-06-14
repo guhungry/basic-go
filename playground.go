@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"strconv"
 
-	"bee-playground/foo"
 	"bee-playground/money"
 	"bee-playground/utils"
 	"bee-playground/workshop/batch"
@@ -14,6 +13,7 @@ import (
 	"bee-playground/workshop/http"
 	"bee-playground/workshop/methods"
 	"bee-playground/workshop/options"
+	"bee-playground/workshop/packages"
 	"bee-playground/workshop/parallel"
 	"bee-playground/workshop/postgresql"
 	"bee-playground/workshop/test"
@@ -54,7 +54,7 @@ func main() {
 	line()
 	workshopCar()
 	line()
-	workshopPackage()
+	packages.Workshop()
 	line()
 	methods.Methods()
 	line()
@@ -279,8 +279,4 @@ func CarPrintDetailWithCustomType(car Car) {
 
 func CarPrettyPrintPrice(car Car) {
 	fmt.Printf("Name: %s\nModel: %s\nPrice: $%s\n", car.Name, car.Model, money.FormatMoney(car.Price))
-}
-
-func workshopPackage() {
-	foo.PrintFoo()
 }
