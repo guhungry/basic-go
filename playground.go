@@ -5,6 +5,7 @@ import (
 	"strconv"
 
 	"bee-playground/utils"
+	"bee-playground/workshop/arraySlice"
 	"bee-playground/workshop/batch"
 	"bee-playground/workshop/car"
 	"bee-playground/workshop/channel"
@@ -46,9 +47,9 @@ func main() {
 	line()
 	workshopAddress()
 	line()
-	arraySlice()
+	arraySlice.ArraySlice()
 	line()
-	workshopArraySlice()
+	arraySlice.Workshop()
 	line()
 	ifelse.Workshop()
 	line()
@@ -183,27 +184,4 @@ func workshopAddress() {
 	a := Address{HomeNo: "15", StreetName: "My Street", Province: "Nonthaburi", ZipCode: 11120}
 
 	utils.Dump(a)
-}
-
-func arraySlice() {
-	arr := [2]string{"foo", "bar"}
-	utils.Dump(arr)
-
-	sli := []string{"foo", "bar"}
-	sli = append(sli, "append")
-	sli = append(sli, "extra")
-	utils.Dump(sli)
-
-	fmt.Printf("%v\n", sli[2])
-	fmt.Printf("%v\n", sli[1:])
-	fmt.Printf("%v\n", sli[:2])
-	fmt.Printf("%v\n", sli[1:3])
-}
-
-func workshopArraySlice() {
-	id := "1234567890123"
-	utils.Dump(id)
-
-	last4Index := len(id) - 4
-	utils.Dump(id[last4Index:])
 }
