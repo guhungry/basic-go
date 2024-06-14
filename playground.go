@@ -12,6 +12,7 @@ import (
 	"bee-playground/workshop/csv"
 	"bee-playground/workshop/generics"
 	"bee-playground/workshop/http"
+	"bee-playground/workshop/methods"
 	"bee-playground/workshop/options"
 	"bee-playground/workshop/parallel"
 	"bee-playground/workshop/postgresql"
@@ -55,9 +56,9 @@ func main() {
 	line()
 	workshopPackage()
 	line()
-	methods()
+	methods.Methods()
 	line()
-	workshopMethods()
+	methods.Workshop()
 	line()
 	generics.Workshop()
 	line()
@@ -282,43 +283,4 @@ func CarPrettyPrintPrice(car Car) {
 
 func workshopPackage() {
 	foo.PrintFoo()
-}
-
-type Bee struct {
-	Name string
-	Age  int
-}
-
-func (m Bee) isAdult() bool {
-	return m.Age > 20
-}
-
-func methods() {
-	bee := Bee{Name: "Bee", Age: 35}
-
-	utils.Dump(bee)
-	fmt.Printf("isAdult: %t\n", bee.isAdult())
-}
-
-type Employee struct {
-	FirstName string
-	LastName  string
-	Branch    string
-	Salary    float64
-}
-
-func (v Employee) FullName() {
-	fmt.Printf("Full Name: %s %s\n", v.FirstName, v.LastName)
-}
-
-func (v Employee) PrintSalary() {
-	fmt.Printf("Salary: $%s\n", money.FormatMoney(v.Salary))
-}
-
-func workshopMethods() {
-	result := Employee{FirstName: "Bee", LastName: "Haha", Salary: 55555555}
-
-	utils.Dump(result)
-	result.FullName()
-	result.PrintSalary()
 }
