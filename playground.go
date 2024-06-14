@@ -10,6 +10,7 @@ import (
 	"bee-playground/workshop/batch"
 	"bee-playground/workshop/csv"
 	"bee-playground/workshop/http"
+	"bee-playground/workshop/options"
 
 	"github.com/shopspring/decimal"
 )
@@ -60,6 +61,8 @@ func main() {
 	csv.Workshop()
 	line()
 	batch.Workshop()
+	line()
+	options.Workshop()
 }
 
 func hello() {
