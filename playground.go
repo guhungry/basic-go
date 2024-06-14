@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"bee-playground/utils"
 	"fmt"
 	"log"
 	"net/http"
@@ -81,11 +82,11 @@ func workshopDataType() {
 	boolean := true
 	bite := []byte(`simple byte string`)
 
-	dump(golang)
-	dump(number)
-	dump(float)
-	dump(boolean)
-	dump(bite)
+	utils.Dump(golang)
+	utils.Dump(number)
+	utils.Dump(float)
+	utils.Dump(boolean)
+	utils.Dump(bite)
 }
 
 func conversion() {
@@ -95,7 +96,7 @@ func conversion() {
 		fmt.Println("parse float error:", str, err)
 		return
 	}
-	dump(float)
+	utils.Dump(float)
 
 	inter := interface{}("14")
 	val, ok := inter.(string)
@@ -103,7 +104,7 @@ func conversion() {
 		fmt.Println("parse interface error:", inter, ok)
 		return
 	}
-	dump(val)
+	utils.Dump(val)
 }
 
 func maptype() {
@@ -142,14 +143,14 @@ func customtype() {
 
 	a := CustomType{firstName: "A", lastName: "B", age: 10}
 
-	dump(a)
+	utils.Dump(a)
 
 	var b CustomType
 	b.firstName = "B"
 	b.lastName = "C"
 	b.age = 15
 
-	dump(b)
+	utils.Dump(b)
 }
 
 func workshopAddress() {
@@ -162,17 +163,17 @@ func workshopAddress() {
 
 	a := Address{HomeNo: "15", StreetName: "My Street", Province: "Nonthaburi", ZipCode: 11120}
 
-	dump(a)
+	utils.Dump(a)
 }
 
 func arraySlice() {
 	arr := [2]string{"foo", "bar"}
-	dump(arr)
+	utils.Dump(arr)
 
 	sli := []string{"foo", "bar"}
 	sli = append(sli, "append")
 	sli = append(sli, "extra")
-	dump(sli)
+	utils.Dump(sli)
 
 	fmt.Printf("%v\n", sli[2])
 	fmt.Printf("%v\n", sli[1:])
@@ -182,10 +183,10 @@ func arraySlice() {
 
 func workshopArraySlice() {
 	id := "1234567890123"
-	dump(id)
+	utils.Dump(id)
 
 	last4Index := len(id) - 4
-	dump(id[last4Index:])
+	utils.Dump(id[last4Index:])
 }
 
 func workshopIfElse() {
@@ -227,7 +228,7 @@ func oddFor() {
 	for i := range numbers {
 		numbers[i] = i + 1
 	}
-	dump(numbers)
+	utils.Dump(numbers)
 
 	//	for i := 1; i <= 100; i++ {
 	for _, i := range numbers {
@@ -260,7 +261,7 @@ func CarPrintDetailWithCustomType(car Car) {
 }
 
 func CarPrettyPrintPrice(car Car) {
-	fmt.Printf("Name: %s\nModel: %s\nPrice: $%0.2f\n", car.Name, car.Model, money.FormatMoney(car.Price))
+	fmt.Printf("Name: %s\nModel: %s\nPrice: $%s\n", car.Name, car.Model, money.FormatMoney(car.Price))
 }
 
 func workshopPackage() {
@@ -279,7 +280,7 @@ func (m Bee) isAdult() bool {
 func methods() {
 	bee := Bee{Name: "Bee", Age: 35}
 
-	dump(bee)
+	utils.Dump(bee)
 	fmt.Printf("isAdult: %t\n", bee.isAdult())
 }
 
@@ -301,7 +302,7 @@ func (v Employee) PrintSalary() {
 func workshopMethods() {
 	result := Employee{FirstName: "Bee", LastName: "Haha", Salary: 55555555}
 
-	dump(result)
+	utils.Dump(result)
 	result.FullName()
 	result.PrintSalary()
 }
@@ -311,9 +312,9 @@ func workshopGenerics() {
 	float32s := []float32{4.7, 5.9, 1.2, 8.6}
 	float64s := []float64{1.23, 6.33, 12.6}
 
-	dump(sumNumber(ints))
-	dump(sumNumber(float32s))
-	dump(sumNumber(float64s))
+	utils.Dump(sumNumber(ints))
+	utils.Dump(sumNumber(float32s))
+	utils.Dump(sumNumber(float64s))
 }
 
 func sumNumber[T ~int | ~int8 | ~int16 | ~int32 | ~int64 | ~float32 | ~float64](numbers []T) T {
