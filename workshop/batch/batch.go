@@ -48,7 +48,7 @@ type Comments struct {
 }
 
 func handleTodos(api string) {
-	todos, err := http.RequestJson[Todos](url+api, nil)
+	todos, err := http.GetJson[Todos](url + api)
 	if err != nil {
 		log.Println(err)
 		return
@@ -58,7 +58,7 @@ func handleTodos(api string) {
 }
 
 func handleComments(api string) {
-	todos, err := http.RequestJson[Comments](url+api, nil)
+	todos, err := http.GetJson[Comments](url + api)
 	if err != nil {
 		log.Println(err)
 		return

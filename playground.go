@@ -8,6 +8,7 @@ import (
 	"bee-playground/money"
 	"bee-playground/utils"
 	"bee-playground/workshop/batch"
+	"bee-playground/workshop/channel"
 	"bee-playground/workshop/csv"
 	"bee-playground/workshop/generics"
 	"bee-playground/workshop/http"
@@ -70,6 +71,8 @@ func main() {
 	postgresql.Workshop()
 	line()
 	parallel.Workshop()
+	line()
+	channel.Workshop()
 }
 
 func hello() {
