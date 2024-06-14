@@ -12,6 +12,7 @@ import (
 	"bee-playground/workshop/fors"
 	"bee-playground/workshop/generics"
 	"bee-playground/workshop/http"
+	"bee-playground/workshop/ifelse"
 	"bee-playground/workshop/methods"
 	"bee-playground/workshop/options"
 	"bee-playground/workshop/packages"
@@ -49,7 +50,7 @@ func main() {
 	line()
 	workshopArraySlice()
 	line()
-	workshopIfElse()
+	ifelse.Workshop()
 	line()
 	fors.Workshop()
 	line()
@@ -205,26 +206,4 @@ func workshopArraySlice() {
 
 	last4Index := len(id) - 4
 	utils.Dump(id[last4Index:])
-}
-
-func workshopIfElse() {
-	score := 90
-	grade := getGrage(score)
-
-	fmt.Printf("Score: %d, grade: %s\n", score, grade)
-}
-
-func getGrage(score int) string {
-	switch {
-	case score > 90:
-		return "A"
-	case score > 80:
-		return "B"
-	case score > 70:
-		return "C"
-	case score > 60:
-		return "D"
-	default:
-		return "Fail"
-	}
 }
