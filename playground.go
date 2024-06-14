@@ -1,15 +1,13 @@
 package main
 
 import (
-	"encoding/json"
 	"bee-playground/utils"
 	"fmt"
-	"log"
-	"net/http"
 	"strconv"
 
 	"bee-playground/foo"
 	"bee-playground/money"
+	"bee-playground/workshop/http"
 
 	"github.com/shopspring/decimal"
 )
@@ -55,7 +53,7 @@ func main() {
 	line()
 	workshopGenerics()
 	line()
-	workshopHttp()
+	http.Workshop()
 }
 
 func hello() {
@@ -69,10 +67,6 @@ func hello() {
 
 func line() {
 	fmt.Println("======================")
-}
-
-func dump(val interface{}) {
-	fmt.Printf("%T: %+v\n", val, val)
 }
 
 func workshopDataType() {
@@ -324,49 +318,4 @@ func sumNumber[T ~int | ~int8 | ~int16 | ~int32 | ~int64 | ~float32 | ~float64](
 		result += v
 	}
 	return result
-}
-
-type Users struct {
-	Code int `json:"code"`
-	Data []struct {
-		Id     int    `json:"id"`
-		Name   string `json:"name"`
-		Email  string `json:"email"`
-		Gender string `json:"gender"`
-		Status string `json:"status"`
-	} `json:"data"`
-}
-
-func workshopHttp() {
-	url := "https://gorest.co.in/public-api/users"
-
-	response, err := requestJson[Users](url, nil)
-	if err != nil {
-		log.Println(err)
-	}
-	dump(response)
-}
-
-func requestJson[T any](url string, body any) (T, any) {
-	var result T
-
-	req, err := http.NewRequest(http.MethodGet, url, nil)
-	if err != nil {
-		log.Println("http request error:", err)
-		return result, err
-	}
-
-	client := &http.Client{}
-	res, err := client.Do(req)
-	if err != nil {
-		log.Println("client do error:", err)
-		return result, err
-	}
-	defer res.Body.Close()
-
-	if err := json.NewDecoder(res.Body).Decode(&result); err != nil {
-		log.Println("parse json error:", err)
-		return result, err
-	}
-	return result, nil
 }
