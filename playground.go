@@ -1,16 +1,17 @@
 package main
 
 import (
-	"bee-playground/utils"
 	"fmt"
 	"strconv"
 
 	"bee-playground/foo"
 	"bee-playground/money"
+	"bee-playground/utils"
 	"bee-playground/workshop/batch"
 	"bee-playground/workshop/csv"
 	"bee-playground/workshop/http"
 	"bee-playground/workshop/options"
+	"bee-playground/workshop/postgresql"
 
 	"github.com/shopspring/decimal"
 )
@@ -63,6 +64,8 @@ func main() {
 	batch.Workshop()
 	line()
 	options.Workshop()
+	line()
+	postgresql.Workshop()
 }
 
 func hello() {
