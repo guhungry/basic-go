@@ -10,16 +10,20 @@ import (
 var wg sync.WaitGroup
 
 func Workshop() {
+	result := make(chan string, 3)
 	wg.Add(3)
 
-	go callUrl("https://www.google.com")
-	go callUrl("https://www.twitch.tv")
-	go callUrl("https://www.kasikornbank.com")
+	go callUrl("https://www.google.com", result)
+	go callUrl("https://www.twitch.tv", result)
+	go callUrl("https://www.kasikornbank.com", result)
 
 	wg.Wait()
+	for i := 0; i < 3; i++ {
+		utils.Dump(len(<-result))
+	}
 }
 
-func callUrl(url string) {
+func callUrl(url string, result chan string) {
 	defer wg.Done()
 
 	response, err := http.RequestText(url, nil)
@@ -28,5 +32,5 @@ func callUrl(url string) {
 		return
 	}
 
-	utils.Dump(response)
+	result <- response
 }
