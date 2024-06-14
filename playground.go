@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"strconv"
 
-	"bee-playground/money"
 	"bee-playground/utils"
 	"bee-playground/workshop/batch"
+	"bee-playground/workshop/car"
 	"bee-playground/workshop/channel"
 	"bee-playground/workshop/csv"
 	"bee-playground/workshop/generics"
@@ -52,7 +52,7 @@ func main() {
 	line()
 	workshopFor()
 	line()
-	workshopCar()
+	car.Workshop()
 	line()
 	packages.Workshop()
 	line()
@@ -253,30 +253,4 @@ func oddFor() {
 			fmt.Println(i)
 		}
 	}
-}
-
-type Car struct {
-	Name  string
-	Model string
-	Price float64
-}
-
-func workshopCar() {
-	car := Car{Name: "BMW", Model: "i8", Price: 13000000}
-
-	CarPrintDetails(car.Name, car.Model, car.Price)
-	CarPrintDetailWithCustomType(car)
-	CarPrettyPrintPrice(car)
-}
-
-func CarPrintDetails(name string, model string, price float64) {
-	fmt.Printf("Name: %s\nModel: %s\nPrice: $%f\n", name, model, price)
-}
-
-func CarPrintDetailWithCustomType(car Car) {
-	fmt.Printf("%+v", car)
-}
-
-func CarPrettyPrintPrice(car Car) {
-	fmt.Printf("Name: %s\nModel: %s\nPrice: $%s\n", car.Name, car.Model, money.FormatMoney(car.Price))
 }
