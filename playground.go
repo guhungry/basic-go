@@ -7,6 +7,7 @@ import (
 
 	"bee-playground/foo"
 	"bee-playground/money"
+	"bee-playground/workshop/csv"
 	"bee-playground/workshop/http"
 
 	"github.com/shopspring/decimal"
@@ -54,6 +55,8 @@ func main() {
 	workshopGenerics()
 	line()
 	http.Workshop()
+	line()
+	csv.Workshop()
 }
 
 func hello() {
