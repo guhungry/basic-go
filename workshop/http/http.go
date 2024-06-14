@@ -46,7 +46,7 @@ func requestJson[T any](method string, url string, body any) (T, any) {
 		log.Println("parse request error:", err)
 		return result, err
 	}
-	req, err := http.NewRequest(method, url, bodyReader)
+	req, err := makeHttpRequest(method, url, bodyReader)
 	if err != nil {
 		log.Println("http request error:", err)
 		return result, err
@@ -65,6 +65,13 @@ func requestJson[T any](method string, url string, body any) (T, any) {
 		return result, err
 	}
 	return result, nil
+}
+
+func makeHttpRequest(method string, url string, bodyReader *bytes.Reader) (*http.Request, error) {
+	if bodyReader == nil {
+		return http.NewRequest(method, url, nil)
+	}
+	return http.NewRequest(method, url, bodyReader)
 }
 
 func toJsonBody(body any) (*bytes.Reader, error) {
