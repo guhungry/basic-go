@@ -12,6 +12,7 @@ import (
 	"bee-playground/workshop/generics"
 	"bee-playground/workshop/http"
 	"bee-playground/workshop/options"
+	"bee-playground/workshop/parallel"
 	"bee-playground/workshop/postgresql"
 
 	"github.com/shopspring/decimal"
@@ -67,6 +68,8 @@ func main() {
 	options.Workshop()
 	line()
 	postgresql.Workshop()
+	line()
+	parallel.Workshop()
 }
 
 func hello() {

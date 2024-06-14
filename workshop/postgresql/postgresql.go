@@ -13,6 +13,7 @@ func Workshop() {
 }
 
 func ConnectPostgres() error {
+	return nil
 	conn := "postgresql://neondb_owner:b7FsSlEq4PIV@ep-black-poetry-a1zc2yjj.ap-southeast-1.aws.neon.tech/neondb?sslmode=require"
 	fmt.Println("connection:", conn)
 
