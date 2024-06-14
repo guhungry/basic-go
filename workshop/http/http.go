@@ -21,14 +21,14 @@ type Users struct {
 func Workshop() {
 	url := "https://gorest.co.in/public-api/users"
 
-	response, err := requestJson[Users](url, nil)
+	response, err := RequestJson[Users](url, nil)
 	if err != nil {
 		log.Println(err)
 	}
 	utils.Dump(response)
 }
 
-func requestJson[T any](url string, body any) (T, any) {
+func RequestJson[T any](url string, body any) (T, any) {
 	var result T
 
 	req, err := http.NewRequest(http.MethodGet, url, nil)

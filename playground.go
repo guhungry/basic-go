@@ -7,6 +7,7 @@ import (
 
 	"bee-playground/foo"
 	"bee-playground/money"
+	"bee-playground/workshop/batch"
 	"bee-playground/workshop/csv"
 	"bee-playground/workshop/http"
 
@@ -57,6 +58,8 @@ func main() {
 	http.Workshop()
 	line()
 	csv.Workshop()
+	line()
+	batch.Workshop()
 }
 
 func hello() {
